@@ -1,0 +1,63 @@
+how to use React/Vue/Inertia or any frontend js in Hostinger
+
+run npm install
+
+run npm run build 
+
+go to .gitignore and remove this
+
+/public/build
+
+
+Upload your repo in GitHub
+
+copy the code https then
+
+go to hostinger and create
+
+subdomain or in main folder
+create database 
+go to GIT tab and create a deployment and paste the link of your GitHub repo
+
+go to SSH panel of hostinger 
+
+and make configuration to the folder or your web app files
+
+go to composer/download to install composer 
+
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+then create a file .htaccess
+
+nano .htaccess
+
+then add this 
+<!-- <IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteRule ^(.*)$ public/$1 [L]
+</IfModule> -->
+
+
+then copy .env.example to create .env file
+
+cp .env.example .env
+
+then modify the following:
+add here the database name, database username, and database password created from hostinger
+
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+
+then run this command
+
+php artisan key:generate
+
+to generate key to access the app
+
+then do the migration by using this command
+
+php artisan migrate
